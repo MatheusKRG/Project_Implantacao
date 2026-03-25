@@ -1,0 +1,476 @@
+:root {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #f7f2e8;
+  background:
+    radial-gradient(circle at top, rgba(196, 176, 120, 0.08), transparent 30%),
+    linear-gradient(180deg, #0b0d10 0%, #13171c 45%, #08090b 100%);
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.theme-hub {
+  padding-top: 3rem;
+}
+
+.panel {
+  background: rgba(15, 17, 21, 0.82);
+  border: 1px solid rgba(173, 162, 130, 0.16);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.hero-panel,
+.landing-shell {
+  padding: 2rem;
+}
+
+.landing-copy {
+  margin-bottom: 1.5rem;
+}
+
+.landing-copy h1 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 0.94;
+  margin: 0 0 1rem;
+  max-width: 12ch;
+}
+
+.landing-text {
+  max-width: 60ch;
+  color: #d2cbc0;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.topbar h1,
+.section-title {
+  margin: 0;
+}
+
+.topbar p {
+  margin: 0.35rem 0 0;
+  color: #c7bfb4;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.button,
+.button-secondary,
+.button-danger {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5efe3;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.button-danger {
+  background: rgba(120, 36, 36, 0.22);
+  color: #ffd4d4;
+  border-color: rgba(215, 98, 98, 0.24);
+}
+
+.button:hover,
+.button-secondary:hover,
+.button-danger:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  padding: 1.25rem;
+}
+
+.card h3,
+.card h2 {
+  margin-top: 0;
+}
+
+.themed-hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  min-height: 420px;
+  isolation: isolate;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 44ch;
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: rgba(8, 10, 13, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.hero-copy h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2.25rem, 4vw, 3.7rem);
+}
+
+.hero-badges {
+  margin: 1rem 0 1.4rem;
+}
+
+.info-strip {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  margin: 0 0 1rem;
+}
+
+.archetype-section {
+  margin-bottom: 1rem;
+}
+
+.archetype-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-portal {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  isolation: isolate;
+}
+
+.portal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 6, 8, 0.12) 0%, rgba(7, 8, 11, 0.82) 100%);
+}
+
+.portal-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+}
+
+.themed-hero::before,
+.game-portal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.46;
+  transform: scale(1.02);
+  z-index: -2;
+}
+
+.themed-hero::after,
+.game-portal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 6, 8, 0.96) 0%, rgba(5, 6, 8, 0.76) 42%, rgba(5, 6, 8, 0.3) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%);
+  z-index: -1;
+}
+
+.muted {
+  color: #c6bcab;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  border: 1px solid rgba(193, 179, 150, 0.2);
+  background: rgba(11, 14, 18, 0.72);
+  color: #f7f2e8;
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-card {
+  width: min(460px, 100%);
+  margin: 3rem auto 0;
+  padding: 2rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #ddd3c4;
+}
+
+.theme-bloodborne {
+  font-family: "Palatino Linotype", Georgia, serif;
+}
+
+.theme-bloodborne .panel {
+  background:
+    linear-gradient(180deg, rgba(14, 14, 18, 0.95), rgba(10, 9, 12, 0.9)),
+    linear-gradient(135deg, rgba(70, 44, 52, 0.22), transparent 60%);
+  border-color: rgba(130, 112, 107, 0.22);
+}
+
+.theme-bloodborne .eyebrow,
+.theme-bloodborne .badge {
+  color: #cab5a6;
+}
+
+.theme-bloodborne .badge {
+  background: rgba(87, 61, 60, 0.25);
+  border-color: rgba(186, 164, 146, 0.15);
+}
+
+.theme-bloodborne .button {
+  background: linear-gradient(135deg, #d8c6b7 0%, #8c594d 100%);
+  color: #1d1210;
+}
+
+.theme-bloodborne .button-secondary {
+  background: rgba(67, 49, 49, 0.24);
+  border-color: rgba(164, 134, 116, 0.18);
+}
+
+.hero-bloodborne {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(130, 112, 106, 0.2), transparent 18%),
+    radial-gradient(circle at 82% 12%, rgba(105, 30, 39, 0.22), transparent 22%),
+    linear-gradient(135deg, rgba(8, 10, 12, 0.98) 0%, rgba(29, 19, 24, 0.94) 55%, rgba(9, 7, 9, 0.98) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(190, 170, 153, 0.08),
+    inset 0 0 150px rgba(53, 16, 24, 0.5);
+}
+
+.portal-bloodborne {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(165, 138, 124, 0.16), transparent 18%),
+    linear-gradient(160deg, rgba(13, 16, 19, 0.96), rgba(42, 28, 33, 0.92) 60%, rgba(12, 8, 10, 0.98));
+}
+
+.hero-bloodborne::before,
+.portal-bloodborne::before {
+  background-image: url("/backgrounds/bloodborne-pg.jpg");
+  filter: grayscale(10%) brightness(0.54) contrast(1.14) saturate(0.92);
+}
+
+.hero-bloodborne::after,
+.portal-bloodborne::after {
+  background:
+    linear-gradient(90deg, rgba(5, 6, 8, 0.96) 0%, rgba(12, 7, 10, 0.82) 40%, rgba(29, 8, 12, 0.36) 100%),
+    radial-gradient(circle at 70% 18%, rgba(138, 34, 34, 0.2), transparent 28%);
+}
+
+.theme-elden-ring {
+  font-family: Garamond, "Palatino Linotype", Georgia, serif;
+}
+
+.theme-elden-ring .panel {
+  background:
+    linear-gradient(180deg, rgba(18, 22, 16, 0.95), rgba(14, 15, 11, 0.9)),
+    linear-gradient(135deg, rgba(168, 138, 46, 0.16), transparent 60%);
+  border-color: rgba(176, 159, 99, 0.24);
+}
+
+.theme-elden-ring .eyebrow,
+.theme-elden-ring .badge {
+  color: #f2de9d;
+}
+
+.theme-elden-ring .badge {
+  background: rgba(122, 100, 36, 0.2);
+  border-color: rgba(229, 205, 120, 0.18);
+}
+
+.theme-elden-ring .button {
+  background: linear-gradient(135deg, #f6e8af 0%, #bb8d2f 100%);
+  color: #2f2408;
+}
+
+.theme-elden-ring .button-secondary {
+  background: rgba(95, 83, 38, 0.24);
+  border-color: rgba(201, 180, 111, 0.18);
+}
+
+.hero-elden-ring {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(247, 225, 147, 0.28), transparent 22%),
+    radial-gradient(circle at 18% 65%, rgba(88, 111, 77, 0.18), transparent 24%),
+    linear-gradient(135deg, rgba(18, 24, 16, 0.98) 0%, rgba(54, 46, 18, 0.92) 55%, rgba(14, 16, 10, 0.98) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(243, 221, 156, 0.08),
+    inset 0 0 150px rgba(138, 109, 27, 0.34);
+}
+
+.portal-elden-ring {
+  background:
+    radial-gradient(circle at 80% 18%, rgba(235, 218, 141, 0.16), transparent 18%),
+    linear-gradient(160deg, rgba(20, 27, 18, 0.98), rgba(62, 52, 21, 0.92) 58%, rgba(18, 17, 12, 0.98));
+}
+
+.hero-elden-ring::before,
+.portal-elden-ring::before {
+  background-image: url("/backgrounds/elden-ring-pg.jpg");
+  filter: saturate(0.96) brightness(0.6) contrast(1.08);
+}
+
+.hero-elden-ring::after,
+.portal-elden-ring::after {
+  background:
+    linear-gradient(90deg, rgba(6, 8, 7, 0.94) 0%, rgba(12, 15, 10, 0.7) 38%, rgba(48, 37, 10, 0.28) 100%),
+    radial-gradient(circle at 74% 18%, rgba(245, 215, 103, 0.22), transparent 28%);
+}
+
+.theme-hub .game-portal h2 {
+  font-size: 2rem;
+  margin: 0 0 0.6rem;
+}
+
+.theme-hub .game-portal p {
+  max-width: 34ch;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100% - 1rem, 1180px);
+    padding-top: 1rem;
+  }
+
+  .hero-panel,
+  .card,
+  .auth-card,
+  .landing-shell {
+    padding: 1.25rem;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
