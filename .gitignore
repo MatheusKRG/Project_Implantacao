@@ -1,6 +1,11 @@
 node_modules/
 dist/
 .env
+.env.development
+.env.production
 .env.local
+.env.development.local
+.env.production.local
 *.tsbuildinfo
 .firebase/
+supabase/.temp/

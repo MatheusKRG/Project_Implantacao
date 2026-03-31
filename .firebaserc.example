@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "seu-projeto-firebase"
+  },
+  "targets": {
+    "seu-projeto-firebase": {
+      "hosting": {
+        "prod": [
+          "seu-site-producao"
+        ],
+        "dev": [
+          "seu-site-desenvolvimento"
+        ]
+      }
+    }
   }
 }

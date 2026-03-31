@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:prod",
+    "build:dev": "tsc -b && vite build --mode development",
+    "build:prod": "tsc -b && vite build --mode production",
     "preview": "vite preview",
-    "deploy:firebase": "firebase deploy --only hosting"
+    "deploy:firebase": "npm run deploy:prod",
+    "deploy:dev": "npm run build:dev && firebase deploy --only hosting:dev",
+    "deploy:prod": "npm run build:prod && firebase deploy --only hosting:prod"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",

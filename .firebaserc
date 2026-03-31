@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "build-library-d8602"
+  },
+  "targets": {
+    "build-library-d8602": {
+      "hosting": {
+        "prod": [
+          "build-library-d8602"
+        ],
+        "dev": [
+          "build-library-d8602-dev"
+        ]
+      }
+    }
   }
 }
