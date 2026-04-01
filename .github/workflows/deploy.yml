@@ -36,11 +36,21 @@ jobs:
         run: |
           if [ "${GITHUB_REF_NAME}" = "production" ]; then
             echo "DEPLOY_SCRIPT=deploy:prod" >> "$GITHUB_ENV"
-            echo "DEPLOY_ENV=production" >> "$GITHUB_ENV"
+            echo "DOTENV_FILE=.env.production" >> "$GITHUB_ENV"
           else
             echo "DEPLOY_SCRIPT=deploy:dev" >> "$GITHUB_ENV"
-            echo "DEPLOY_ENV=developer" >> "$GITHUB_ENV"
+            echo "DOTENV_FILE=.env.development" >> "$GITHUB_ENV"
           fi
+
+      - name: Create Supabase env file
+        shell: bash
+        run: |
+          test -n "${{ secrets.VITE_SUPABASE_URL }}"
+          test -n "${{ secrets.VITE_SUPABASE_ANON_KEY }}"
+          cat <<EOF > "${DOTENV_FILE}"
+          VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          EOF
 
       - name: Deploy to Firebase Hosting
         run: npm run ${{ env.DEPLOY_SCRIPT }}
