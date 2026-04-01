@@ -53,3 +53,18 @@ O Vite usa `.env.development` no `npm run dev` e no `npm run build:dev`, e usa `
 7. Rode `npm run deploy:prod` para publicar o ambiente prod
 
 O arquivo [firebase.json](/C:/Users/mbrum/OneDrive/Desktop/faculdade/Project_Implantacao/firebase.json) ja esta configurado com dois targets de Hosting e rewrite para SPA, entao as rotas do React funcionam nos dois ambientes.
+
+## Deploy automatico com GitHub Actions
+
+O workflow [deploy.yml](/C:/Users/mbrum/OneDrive/Desktop/faculdade/Project_Implantacao/.github/workflows/deploy.yml) faz o deploy automaticamente por branch:
+
+- `main` faz deploy em producao com `npm run deploy:prod`
+- `dev` faz deploy no ambiente de desenvolvimento com `npm run deploy:dev`
+
+Antes de usar, configure no repositorio do GitHub:
+
+1. `Settings > Secrets and variables > Actions`
+2. Crie o secret `FIREBASE_TOKEN`
+3. Gere esse token com `firebase login:ci`
+
+Se quiser, voce tambem pode criar os environments `production` e `developer` no GitHub para controlar approvals, secrets e historico de deploy por ambiente.
