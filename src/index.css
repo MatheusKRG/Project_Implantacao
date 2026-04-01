@@ -49,6 +49,16 @@ select {
   padding-top: 3rem;
 }
 
+.dev-homepage {
+  font-family: "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+}
+
+.dev-homepage .landing-copy h1,
+.dev-homepage .game-portal h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.03em;
+}
+
 .panel {
   background: rgba(15, 17, 21, 0.82);
   border: 1px solid rgba(173, 162, 130, 0.16);

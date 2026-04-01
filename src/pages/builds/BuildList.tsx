@@ -3,9 +3,10 @@ import { GAME_THEMES } from "../../utils/games";
 
 export function HomePage() {
   const themes = [GAME_THEMES.bloodborne, GAME_THEMES["elden-ring"]];
+  const homePageClassName = `app-shell theme-hub${import.meta.env.DEV ? " dev-homepage" : ""}`;
 
   return (
-    <main className="app-shell theme-hub">
+    <main className={homePageClassName}>
       <section className="panel landing-shell">
         <div className="landing-copy">
           <p className="eyebrow">Build Library</p>
