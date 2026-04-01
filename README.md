@@ -58,8 +58,10 @@ O arquivo [firebase.json](/C:/Users/mbrum/OneDrive/Desktop/faculdade/Project_Imp
 
 O workflow [deploy.yml](/C:/Users/mbrum/OneDrive/Desktop/faculdade/Project_Implantacao/.github/workflows/deploy.yml) faz o deploy automaticamente por branch:
 
-- `main` faz deploy em producao com `npm run deploy:prod`
+- `production` faz deploy em producao com `npm run deploy:prod`
 - `dev` faz deploy no ambiente de desenvolvimento com `npm run deploy:dev`
+
+A branch `main` deixa de publicar direto e pode ficar como branch de integracao, enquanto a branch `production` fica dedicada ao deploy de producao.
 
 Antes de usar, configure no repositorio do GitHub:
 

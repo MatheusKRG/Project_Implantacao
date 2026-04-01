@@ -3,7 +3,7 @@ name: Deploy Firebase Hosting
 on:
   push:
     branches:
-      - main
+      - production
       - dev
 
 concurrency:
@@ -13,7 +13,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'main' && 'production' || 'developer' }}
+    environment: ${{ github.ref_name == 'production' && 'production' || 'developer' }}
 
     steps:
       - name: Checkout
@@ -34,7 +34,7 @@ jobs:
       - name: Select deploy target
         shell: bash
         run: |
-          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+          if [ "${GITHUB_REF_NAME}" = "production" ]; then
             echo "DEPLOY_SCRIPT=deploy:prod" >> "$GITHUB_ENV"
             echo "DEPLOY_ENV=production" >> "$GITHUB_ENV"
           else
