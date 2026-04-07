@@ -31,6 +31,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 Se quiser, os dois ambientes podem apontar para projetos diferentes do Supabase.
+Os arquivos `.env*` reais estao no `.gitignore`, entao as credenciais locais nao sobem para o repositorio.
 
 ## Como rodar
 
@@ -68,5 +69,12 @@ Antes de usar, configure no repositorio do GitHub:
 1. `Settings > Secrets and variables > Actions`
 2. Crie o secret `FIREBASE_TOKEN`
 3. Gere esse token com `firebase login:ci`
+4. Crie o environment `developer` com os secrets `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
+5. Crie o environment `production` com os secrets `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
 
-Se quiser, voce tambem pode criar os environments `production` e `developer` no GitHub para controlar approvals, secrets e historico de deploy por ambiente.
+Mapeamento usado pelo workflow:
+
+- branch `dev` -> environment `developer` -> gera `.env.development`
+- branch `production` -> environment `production` -> gera `.env.production`
+
+Os valores do Supabase sao lidos desses secrets durante o deploy, entao trocar banco em producao ou desenvolvimento exige atualizar os respectivos secrets no GitHub.
